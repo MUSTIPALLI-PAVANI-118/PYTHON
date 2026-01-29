@@ -1,0 +1,10 @@
+#Print a square of stars of size 5
+print("* * * * * * * * * *")
+print("*                 *")
+print("*                 *")
+print("*                 *")
+print("*                 *")
+print("*                 *")
+print("*                 *")
+print("*                 *")
+print("* * * * * * * * * *")
