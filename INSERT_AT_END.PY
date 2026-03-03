@@ -1,12 +1,13 @@
-    def insert_at_end(self, data):
-        new_node = Node(data)
+def insert_at_end(self, data):
+    new_node = Node(data)
 
-        if self.head is None:
-            self.head = new_node
-            return
+    if self.head is None:
+        self.head = new_node
+        return
 
-        temp = self.head
-        while temp.next:
-            temp = temp.next
+    temp = self.head
+    while temp.next:
+        temp = temp.next
 
-        temp.next = new_node
+    temp.next = new_node
+    new_node.prev = temp
