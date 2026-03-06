@@ -1,1 +1,2 @@
-None <- [prev|data|next] <-> [prev|data|next] <-> [prev|data|next] -> None
+[data|next] -> [data|next] -> [data|next]
+      ^______________________________|
