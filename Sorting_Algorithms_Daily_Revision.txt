@@ -1,0 +1,121 @@
+==============================  SORTING FINAL SUMMARY  ==============================
+
+KEY IDEA:
+Bubble    == Swap neighbours again and again
+Selection == Pick smallest and place it in front
+Insertion == Insert current item into correct place in left(sorted) part
+Quick     == Pick pivot, split (< = >), recurse, join
+Merge     == Split halves, recurse, merge two sorted lists
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+==================================  1) BUBBLE SORT  ==================================
+What it does  == Biggest element "bubbles" to the end each pass
+Best for      == Very small lists / learning swaps
+Stable        == YES
+In-place      == YES
+
+Example (6 4 5 3 1 2):
+PASS 1  == [6,4,5,3,1,2] -> [4,5,3,1,2,6]
+PASS 2  == [4,5,3,1,2,6] -> [4,3,1,2,5,6]
+PASS 3  == [4,3,1,2,5,6] -> [3,1,2,4,5,6]
+PASS 4  == [3,1,2,4,5,6] -> [1,2,3,4,5,6]
+
+Time (avg/worst) == O(n^2)       Best == O(n) with early-exit
+Space            == O(1)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+================================  2) SELECTION SORT  ================================
+What it does  == Find smallest in unsorted part, swap into correct position
+Best for      == When swaps must be minimal (still slow comparisons)
+Stable        == NO (normally)
+In-place      == YES
+
+Example (6 4 5 3 1 2):
+PASS 1  == min=1 swap with 6  -> [1,4,5,3,6,2]
+PASS 2  == min=2 swap with 4  -> [1,2,5,3,6,4]
+PASS 3  == min=3 swap with 5  -> [1,2,3,5,6,4]
+PASS 4  == min=4 swap with 5  -> [1,2,3,4,6,5]
+PASS 5  == min=5 swap with 6  -> [1,2,3,4,5,6]
+
+Time (avg/worst/best) == O(n^2)
+Space                 == O(1)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+================================  3) INSERTION SORT  ================================
+What it does  == Build sorted part on left; take key and insert in correct place
+Best for      == Nearly-sorted arrays / small arrays
+Stable        == YES
+In-place      == YES
+
+Example (6 4 5 3 1 2):
+i=1 key=4  == [6] insert 4 -> [4,6,5,3,1,2]
+i=2 key=5  == [4,6] insert 5 -> [4,5,6,3,1,2]
+i=3 key=3  == [4,5,6] insert 3 -> [3,4,5,6,1,2]
+i=4 key=1  == [3,4,5,6] insert 1 -> [1,3,4,5,6,2]
+i=5 key=2  == [1,3,4,5,6] insert 2 -> [1,2,3,4,5,6]
+
+Time (avg/worst) == O(n^2)       Best == O(n)
+Space            == O(1)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+===================================  4) QUICK SORT  ==================================
+What it does  == Choose pivot; split into left(<), mid(=), right(>); recurse
+Best for      == Fast general-purpose (average)
+Stable        == NO (usually)
+In-place      == YES (in-place version)   |   Your list-version uses extra space
+
+Example (6 4 5 3 1 2) using pivot = middle:
+[6,4,5,3,1,2] pivot=3  == left [1,2]  mid[3]  right[6,4,5]
+right[6,4,5] pivot=4   == left []     mid[4]  right[6,5]
+right[6,5]   pivot=5   == left []     mid[5]  right[6]
+JOIN                      -> [1,2] + [3] + [4,5,6] == [1,2,3,4,5,6]
+
+Time (avg) == O(n log n)     Worst == O(n^2)
+Space      == O(log n) stack (in-place) | more in list-version
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+===================================  5) MERGE SORT  ==================================
+What it does  == Split into halves until 1; then merge sorted halves
+Best for      == Guaranteed O(n log n), good for linked lists, stable sorting
+Stable        == YES
+In-place      == NO (needs extra space)
+
+Example (6 4 5 3 1 2):
+SPLIT:
+[6,4,5,3,1,2]
+   -> [6,4,5] + [3,1,2]
+   -> [6] + [4,5]     and     [3] + [1,2]
+   -> [4] + [5]              [1] + [2]
+
+MERGE:
+[4]+[5]   == [4,5]
+[6]+[4,5] == [4,5,6]
+[1]+[2]   == [1,2]
+[3]+[1,2] == [1,2,3]
+[4,5,6]+[1,2,3] == [1,2,3,4,5,6]
+
+Time  == O(n log n) (best/avg/worst)
+Space == O(n)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+==============================  FINAL CHEAT SHEET (1 LINE)  ==========================
+Bubble    == swap neighbours until no swaps
+Selection == pick smallest, place at front
+Insertion == take key, insert into left sorted part
+Quick     == pivot split recurse join
+Merge     == split recurse merge
+
+=====================================================================================
+S
